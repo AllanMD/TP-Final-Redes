@@ -1,6 +1,9 @@
 package com.redes;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Scanner;
 
 public class Cliente extends Conexion {
@@ -18,24 +21,19 @@ public class Cliente extends Conexion {
             //Flujo de datos hacia el servidor
             salidaServidor = new DataOutputStream(clienteSocket.getOutputStream());
 
-            //Se enviarán dos mensajes
-            /*for (int i = 0; i < 23; i++)
-            {
-                //Se escribe en el servidor usando su flujo de datos
-                System.out.println("Ingrese mensajito: ");
-                mensaje = scanner.nextLine();
-                salidaServidor.writeUTF("Este es el mensaje número " + (i+1) + mensaje + "\n");
-            }*/
+            // para recibir mensaje del servidor
             BufferedReader entrada = new BufferedReader(new InputStreamReader(clienteSocket.getInputStream()));
-            // para recibir mensaje del servidor ??
-            System.out.println("Cliente iniciado\n");
+
+            System.out.println("Cliente iniciado!\n");
+            System.out.println(entrada.readLine());
 
             do {
-                    System.out.println(entrada.readLine()); // para recibir mensaje del servidor
-
-                System.out.println("Ingrese mensajito: ");
+                System.out.println("\nIngrese mensajito: ");
                 mensaje = scanner.nextLine();
-                salidaServidor.writeUTF("[Cliente]: " + mensaje + "\n");
+                salidaServidor.writeUTF( mensaje + "\n");
+                System.out.println("Esperando respuesta...");
+                System.out.println(entrada.readLine()); // para recibir mensaje del servidor
+
 
             }while (true);
 

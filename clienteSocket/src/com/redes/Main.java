@@ -11,7 +11,7 @@ public class Main {
     public static void main(String[] args) {
 
 
-        conectarse();
+        iniciarCliente();
 
 
         /// el cliente y el servidor son 2 proyectos separados, ambos se corren al mismo tiempo
@@ -20,15 +20,15 @@ public class Main {
         // hay q hacer el metodo para que pueda ingresarlo por teclado: fijarse el constructor del cliente ?
     }
 
-    public static void conectarse(){
+    public static void iniciarCliente(){
         Cliente cli = null; //Se crea el cliente
         try {
             cli = new Cliente();
-            System.out.println("Iniciando cliente\n");
+            System.out.println("\nIniciando cliente\n");
             cli.startClient(); //Se inicia el cliente
         } catch (IOException e) {
             System.out.println("ERROR CON EL IP O EL PUERTO INGRESADO. VUELVA A INTENTAR");
-            conectarse();
+            iniciarCliente();
 
         }
 

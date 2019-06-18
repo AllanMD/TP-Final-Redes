@@ -30,7 +30,9 @@ public class Conexion {
 
             System.out.println("\nIngrese el numero de puerto que desea utulizar: ");
             PUERTO = scanner.nextInt();
-            clienteSocket = new Socket(HOST, PUERTO); //Socket para el cliente en localhost en puerto 1234
+            System.out.println("Creando socket...");
+            clienteSocket = new Socket(HOST, PUERTO); //Socket para el cliente en el host y puerto indicado
+            System.out.println("\nSocket creado!");
         }
     }
 }
