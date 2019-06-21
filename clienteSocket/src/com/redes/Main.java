@@ -10,7 +10,6 @@ public class Main {
 
     public static void main(String[] args) {
 
-
         iniciarCliente();
 
 
@@ -29,7 +28,10 @@ public class Main {
         } catch (IOException e) {
             System.out.println("ERROR CON EL IP O EL PUERTO INGRESADO. VUELVA A INTENTAR");
             iniciarCliente();
-
+        }
+        catch (IllegalArgumentException e){ // si se ingresa un puerto mayor a 65535, el constructor de la clase Socket tira esta excepcion
+            System.out.println("PUERTO FUERA DE RANGO. VUELVA A INTENTAR");
+            iniciarCliente();
         }
 
     }
